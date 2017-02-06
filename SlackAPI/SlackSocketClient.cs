@@ -101,7 +101,7 @@ namespace SlackAPI
 
         public void SendMessage(string channelId, string textData)
         {
-            this.SendMessage(null, channelId, textData, null);
+            this.SendMessage(r => { }, channelId, textData, null);
         }
 
         public void SendPing()
