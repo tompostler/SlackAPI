@@ -85,7 +85,7 @@ namespace SlackAPI
             underlyingSocket.Send(new Typing() { channel = channelId });
         }
 
-        public void SendMessage(Action<MessageReceived> onSent, string channelId, string textData, string userName = null)
+        public void SendMessage(Action<MessageReceived> onSent, string channelId, string textData, string userName)
         {
             if (userName == null)
             {
@@ -97,6 +97,11 @@ namespace SlackAPI
             } else {
                 underlyingSocket.Send(new Message() { channel = channelId, text = textData, user = userName, type = "message" });
             }
+        }
+
+        public void SendMessage(string channelId, string textData)
+        {
+            this.SendMessage(null, channelId, textData, null);
         }
 
         public void SendPing()
